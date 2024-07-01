@@ -46,6 +46,7 @@ DELETE FROM `User1` WHERE `uid`='A101';
 DELETE FROM `User1` WHERE `uid`='A102' AND `age`=25;
 DELETE FROM `User1` WHERE `age` >= 30;
 
+#실습 2-6
 ALTER TABLE `User1` ADD `gender` TINYINT;
 ALTER TABLE `User1` ADD `birth` CHAR(10) AFTER `name`;
 ALTER TABLE `User1` MODIFY `gender` CHAR(1);
