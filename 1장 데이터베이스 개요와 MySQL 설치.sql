@@ -9,7 +9,12 @@ show databases;
 drop database `StudyDB`;
 
 #실습 1-2. 일반 관리자 생성 및 권한 부여
-
+CREATE USER 'chhak'@'%' IDENTIFIED BY '1234';
+GRANT ALL PRIVILEGES ON `StudyDB`.* TO 'chhak'@'%';
+FLUSH PRIVILEGES;
 
 #실습 1-3. 사용자 비밀번호 수정 및 삭제
+ALTER USER 'chhak'@'%' IDENTIFIED BY 'abc1234';
+DROP USER 'chhak'@'%';
+FLUSH PRIVILEGES;
 
