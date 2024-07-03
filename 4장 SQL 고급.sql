@@ -2,6 +2,7 @@
 #이름 : 김철학
 #내용 : 4장 SQL 고급
 
+
 #실습 4-1
 CREATE TABLE `Member` (
 	`uid`	VARCHAR(10) PRIMARY KEY,
@@ -84,14 +85,59 @@ INSERT INTO `Sales` (`uid`, `year`, `month`, `sale`) VALUES ('a104', 2020, 2,  8
 INSERT INTO `Sales` (`uid`, `year`, `month`, `sale`) VALUES ('a105', 2020, 2, 180000);
 INSERT INTO `Sales` (`uid`, `year`, `month`, `sale`) VALUES ('a108', 2020, 2,  76000);
 
-
 #실습 4-3
+select * from `Member` where `name`='김유신';
+select * from `Member` where `name` <> '김춘추';
+select * from `Member` where `pos` IN ('사원', '대리');
+select * from `Member` where `name` LIKE '%신';
+select * from `Member` where `name` LIKE '김__';
+select * from `Member` where `name` LIKE '정__';
+
 #실습 4-4
+select * from `Sales`;
+select * from `Sales` ORDER BY `sale`;
+select * from `Sales` ORDER BY `sale` ASC;
+select * from `Sales` ORDER BY `sale` DESC;
+
+select * from `Sales` 
+WHERE `sale` > 50000
+ORDER BY `year`, `month`, `sale` DESC;
+
 #실습 4-5
+select * from `Sales` LIMIT 3;
+select * from `Sales` LIMIT 5, 3;
+
 #실습 4-6
+select SUM(`sale`) AS `합계` FROM `Sales`;
+select COUNT(*) as `갯수` from `Sales`;
+select CONCAT('Hello', 'World') as `결과`;
+select CONCAT(`uid`, `name`, `hp`) FROM `member` WHERE `uid`='a108';
+SELECT NOW();
+INSERT INTO `Member` 
+	VALUES ('a112', '유관순', '010-1234-1012', '대리', 107, NOW());
+
 #실습 4-7
+select SUM(`sale`) as `2018년 1월 매출 총합`
+from `Sales` where `year`=2018 and `month`=1;
+
 #실습 4-8
+select 
+	SUM(`sale`) as `총합`,
+    AVG(`sale`) as `평균`
+from `Sales` 
+where 
+	`year`= 2019 and 
+    `month`=2 and
+    `sale` >= 50000;
+
 #실습 4-9
+select 
+	MIN(`sale`) as `최저매출`,
+    MAX(`sale`) as `최고매출`
+from `Sales` 
+WHERE `year`=2020;
+
+
 #실습 4-10
 #실습 4-11
 #실습 4-12
