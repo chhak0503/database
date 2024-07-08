@@ -65,29 +65,143 @@ INSERT INTO `Order` (`orderId`, `orderProduct`, `orderCount`, `orderDate`) VALUE
 INSERT INTO `Order` (`orderId`, `orderProduct`, `orderCount`, `orderDate`) VALUES ('c107', 6, 1, '2022-07-05 14:21:03');
 
 #실습1-4
+select * from `customer`;
+
 #실습1-5
+select `custId`, `name`, `hp` from `customer`;
+
 #실습1-6
+select * from `product`;
+
 #실습1-7
+select `company` from `product`;
+
 #실습1-8
+select distinct `company` from `product`;
+
 #실습1-9
+select `prodName`, `price` from `product`;
+
 #실습1-10
+select 
+	`prodName`, 
+    `price` + 500 as `조정단가` 
+from `product`;
+
 #실습1-11
+select `prodName`, `stock`, `price` from `product` where `company`='오리온';
+
 #실습1-12
+select 
+	`orderProduct`, 
+    `orderCount`, 
+    `orderDate` 
+from `order` 
+where `orderId` = 'c102';
+
 #실습1-13
+select `orderProduct`, 
+    `orderCount`, 
+    `orderDate`
+from `order` where `orderId`='c102' and `orderCount` >= 2; 
+
 #실습1-14
+select * from `product` where `price` >= 1000 and `price` <= 2000;
+
 #실습1-15
+select 
+	`custid`, `name`, `hp`, `addr` 
+from `customer` where `name` like '김%';
+
 #실습1-16
+select 
+	`custid`, `name`, `hp`, `addr` 
+from `customer` where `name` like '__';
+
+
 #실습1-17
+select * from `customer` where `hp` is null;
+
+
 #실습1-18
+select 
+	*
+from `customer` where `addr` is not null;
+
 #실습1-19
+select 
+	*
+from `customer`
+order by `rdate` desc;
+
 #실습1-20
+select * from `order` where `orderCount` >= 3
+order by `orderCount` desc, `orderProduct` asc;
+
 #실습1-21
+select AVG(`price`) from `product`;
+
 #실습1-22
+select SUM(`stock`) as `재고량 합계` from `product` where `company` = '농심';
+
 #실습1-23
+select count(*) as `고객수` from `customer`;
+
 #실습1-24
+select count(distinct `company`) as `제조업체 수` from `product`;
+
 #실습1-25
+SET SESSION sql_mode = 'STRICT_TRANS_TABLES,NO_ZERO_IN_DATE,NO_ZERO_DATE,ERROR_FOR_DIVISION_BY_ZERO,NO_ENGINE_SUBSTITUTION';
+
+select 
+	`orderProduct` as `주문 상품번호`,
+    SUM(`orderCount`) as `총 주문수량`
+from `order` group by `orderProduct`;
+
 #실습1-26
+select 
+	`company` as `제조업체`,
+	count(*) as `제품수`,
+    max(`price`) as `최고가`    
+ from `product` group by `company`;
+
 #실습1-27
+select 
+	`company` as `제조업체`,
+    count(*) as `제품수`,
+    max(`price`) as `최고가`
+
+from `product` 
+group by `company`
+having `제품수` >= 2;
+
 #실습1-28
+select 
+	`orderProduct`,
+    `orderId`,
+    SUM(`orderCount`) as `총 주문수량`
+    
+from `order` 
+group by `orderId`, `orderProduct`;
+
 #실습1-29
+select 
+	a.orderId,
+    b.prodName
+from `order` as a
+join `product` as b
+on a.orderProduct = b.prodNo
+where `orderId`='c102';
+
 #실습1-30
+select `orderid`, `name`, `prodName`, `orderDate` from `Order` as a
+join `Customer` as b on a.orderId = b.custId
+join `Product` as c on a.orderProduct = c.prodNo
+where
+	substr(`orderDate`, 1, 10) = '2022-07-03';
+
+
+
+
+
+
