@@ -26,10 +26,10 @@ CREATE TABLE `Product` (
 );
 
 CREATE TABLE `Order` (
-	`orderNo`	   INT         PRIMARY KEY,
+	`orderNo`		INT  AUTO_INCREMENT  PRIMARY KEY,
 	`orderId`      VARCHAR(10) NOT NULL,
 	`orderProduct` INT         NOT NULL,
-	`orderCount`   INT         DEFAULT 1,
+	`orderCount`	INT         DEFAULT 1,
 	`orderDate`    DATETIME    NOT NULL
 );
 
@@ -53,16 +53,16 @@ INSERT INTO `Product` (`prodNo`, `prodName`, `stock`, `company`) VALUES (5, '죠
 INSERT INTO `Product` VALUES (6, '마카렛트', 3500, 3500, '롯데');
 INSERT INTO `Product` VALUES (7, '뿌셔뿌셔', 1650, 1200, '오뚜기');
 
-INSERT INTO `Order` VALUES (1,  'c102', 3, 2, '2022-07-01 13:15:10');
-INSERT INTO `Order` VALUES (2,  'c101', 4, 1, '2022-07-01 14:16:11');
-INSERT INTO `Order` VALUES (3,  'c108', 1, 1, '2022-07-01 17:23:18');
-INSERT INTO `Order` VALUES (4,  'c109', 6, 5, '2022-07-02 10:46:36');
-INSERT INTO `Order` VALUES (5,  'c102', 2, 1, '2022-07-03 09:15:37');
-INSERT INTO `Order` VALUES (6,  'c101', 7, 3, '2022-07-03 12:35:12');
-INSERT INTO `Order` VALUES (7,  'c110', 1, 2, '2022-07-03 16:55:36');
-INSERT INTO `Order` VALUES (8,  'c104', 2, 4, '2022-07-04 14:23:23');
-INSERT INTO `Order` VALUES (9,  'c102', 1, 3, '2022-07-04 21:54:34');
-INSERT INTO `Order` VALUES (10, 'c107', 6, 1, '2022-07-05 14:21:03');
+INSERT INTO `Order` (`orderId`, `orderProduct`, `orderCount`, `orderDate`) VALUES ('c102', 3, 2, '2022-07-01 13:15:10');
+INSERT INTO `Order` (`orderId`, `orderProduct`, `orderCount`, `orderDate`) VALUES ('c101', 4, 1, '2022-07-01 14:16:11');
+INSERT INTO `Order` (`orderId`, `orderProduct`, `orderCount`, `orderDate`) VALUES ('c108', 1, 1, '2022-07-01 17:23:18');
+INSERT INTO `Order` (`orderId`, `orderProduct`, `orderCount`, `orderDate`) VALUES ('c109', 6, 5, '2022-07-02 10:46:36');
+INSERT INTO `Order` (`orderId`, `orderProduct`, `orderCount`, `orderDate`) VALUES ('c102', 2, 1, '2022-07-03 09:15:37');
+INSERT INTO `Order` (`orderId`, `orderProduct`, `orderCount`, `orderDate`) VALUES ('c101', 7, 3, '2022-07-03 12:35:12');
+INSERT INTO `Order` (`orderId`, `orderProduct`, `orderCount`, `orderDate`) VALUES ('c110', 1, 2, '2022-07-03 16:55:36');
+INSERT INTO `Order` (`orderId`, `orderProduct`, `orderCount`, `orderDate`) VALUES ('c104', 2, 4, '2022-07-04 14:23:23');
+INSERT INTO `Order` (`orderId`, `orderProduct`, `orderCount`, `orderDate`) VALUES ('c102', 1, 3, '2022-07-04 21:54:34');
+INSERT INTO `Order` (`orderId`, `orderProduct`, `orderCount`, `orderDate`) VALUES ('c107', 6, 1, '2022-07-05 14:21:03');
 
 #실습1-4
 #실습1-5
