@@ -188,18 +188,17 @@ FROM `Sellers` AS a
 LEFT JOIN `Products` AS b ON a.sellerNo = b.sellerNo
 WHERE `prodNo` IS NULL;
 
-#문제9
-select 
-	`orderNo`,
-    SUM(`할인가`) as `최종총합`
-from (
-	select 
-		*,
-		floor(`itemPrice` * (1 - `itemDiscount` / 100)) as `할인가`
-		from `orderitems`
-	) as a
+#문제9 --김주경씨가 수정
+select
+	`orderNo` as `주문번호`,
+	sum(`할인가` * `itemCount`) as `최종총합`
+from
+	(select
+			*,
+			 floor(`itemPrice`-(`itemPrice`*(`itemDiscount`/100))) as `할인가`
+	from `OrderItems`) as a
 group by `orderNo`
-having `최종총합` >= 100000
+having `최종총합` >=100000
 order by `최종총합` desc;
 
 #문제10
